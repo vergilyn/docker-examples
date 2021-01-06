@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.vergilyn.examples</groupId>
+        <artifactId>google-jib-examples</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>google-jib-helloworld</artifactId>
+
+    <build>
+        <plugins>
+            <!-- Jib -->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${google-jib-maven-plugin.version}</version>
+                <configuration>
+                    <!--配置基本镜像-->
+                    <from>
+                        <image>openjdk:8-jdk-alpine</image>
+                    </from>
+
+                    <!-- 配置最终推送的地址，仓库名，镜像名 -->
+                    <to>
+                        <credHelper>aliyun-docker</credHelper>
+                        <!--<image>registry.cn-beijing.aliyuncs.com/{命名空间}/{仓库名称}</image>-->
+                        <image>registry.cn-hangzhou.aliyuncs.com/vergilyn-docker/vergilyn-aliyun-docker-mirror</image>
+                        <tags>
+                            <tag>2.0</tag>
+                        </tags>
+                    </to>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

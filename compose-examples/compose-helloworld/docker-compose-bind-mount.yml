@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    # `image`同时可以指定镜像的名称
+    # https://github.com/compose-spec/compose-spec/blob/master/spec.md#image
+    image: docker-compose-mount-web:v1.0
+    ports:
+      - "5000:5000"
+    # The new `volumes` key mounts the project directory (current directory) on the host to `/code` inside the container,
+    # allowing you to modify the code on the fly, without having to rebuild the image.
+    volumes:
+      - .:/code
+    # The `environment` key sets the `FLASK_ENV` environment variable,
+    # which tells `flask run` to run in `development` mode and reload the code on change.
+    environment:
+      FLASK_ENV: development
+  redis:
+    image: "redis:5.0.10"
