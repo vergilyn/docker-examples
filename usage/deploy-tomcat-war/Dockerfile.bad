@@ -1,0 +1,13 @@
+FROM tomcat:8.5.63-jdk8
+
+# ADD 无法识别并自动解压 war文件
+COPY examples.war webapps/
+
+## unzip -[n|o|q]
+# -n 解压缩时不要覆盖原有的文件。
+RUN unzip -n webapps/examples.war -d webapps/examples/ \
+    && rm webapps/examples.war
+
+EXPOSE 8080
+ENV APPLICATION_NAME deploy-tomcat-war-dockerfile
+CMD ["catalina.sh", "run"]
