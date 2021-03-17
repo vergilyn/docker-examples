@@ -9,8 +9,16 @@ services:
       - 9300:9300
     volumes:
       - "./elasticsearch/config/:/usr/share/elasticsearch/config/"
-      - "./elasticsearch/data/:/usr/share/elasticsearch/data/"
-      - "./elasticsearch/logs/:/usr/share/elasticsearch/logs/"
+      - "D:/tmp/elasticsearch/data/:/usr/share/elasticsearch/data/"
+      - "D:/tmp/elasticsearch/logs/:/usr/share/elasticsearch/logs/"
     environment:
       - discovery.type=single-node
       - APPLICATION_NAME=vergilyn-elasticsearch-7.11.1
+
+  kibana:
+    image: kibana:7.11.1
+    container_name: vergilyn-kibana-7.11.1-single
+    ports:
+      - 5601:5601
+    volumes:
+      - "./kibana/config/:/usr/share/kibana/config/"
