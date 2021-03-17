@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  # SEE: https://www.elastic.co/guide/en/elasticsearch/reference/7.11/docker.html
+  es:
+    image: elasticsearch:7.11.1
+    container_name: vergilyn-elasticsearch-7.11.1-single
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - "./elasticsearch/config/:/usr/share/elasticsearch/config/"
+      - "./elasticsearch/data/:/usr/share/elasticsearch/data/"
+      - "./elasticsearch/logs/:/usr/share/elasticsearch/logs/"
+    environment:
+      - discovery.type=single-node
+      - APPLICATION_NAME=vergilyn-elasticsearch-7.11.1

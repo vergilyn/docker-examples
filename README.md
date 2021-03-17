@@ -13,7 +13,23 @@ github-examples:
 | tomcat | tomcat:8.5.63-jdk8 | 537.85 MB |
 
 ## Q&A
-1. 从host传输文件到container
+1. docker build&run
+```cmd
+$cmd> docker build -t {image-name}:{tag} .
+
+$cmd> docker rmi {image-name}:{tag}
+$cmd> docker rm {container-name}
+
+# Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+# Options:
+#   --rm    Automatically remove the container when it exits
+#   --name  Assign a name to the container
+#   -p      Publish a container's port(s) to the host
+#   -v      Bind mount a volume
+$cmd> docker run --rm --name {container-name} -p {host-port}:{container-post} IMAGE [COMMAND] [ARG...]
+```
+
+2. 从host传输文件到container
 ```
 # 1. 获取 container-id
 $cmd> docker ps
