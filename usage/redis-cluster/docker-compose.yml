@@ -1,0 +1,4 @@
+version: "3.9"
+services:
+  redis:
+    network_mode: host

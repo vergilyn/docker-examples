@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  wordpress:
+    image: wordpress:php8.0-apache
+    container_name: wordpress-php8-apache
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DB_HOST: host.docker.internal:23306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: 123456
+      # The `WORDPRESS_DB_NAME` needs to already exist on the given MySQL server;
+      # it will not be created by the `wordpress` container.
+      WORDPRESS_DB_NAME: wordpress_php8_apache
+    volumes:
+      - "D:/docker-volumes/wordpress/html/:/var/www/html"
+#      - "D:/docker-volumes/wordpress/html/wp-content/themes/:/var/www/html/wp-content/themes/"
+#      - "D:/docker-volumes/wordpress/html/wp-content/plugins/:/var/www/html/wp-content/plugins/"
