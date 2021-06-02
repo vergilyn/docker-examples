@@ -1,6 +1,4 @@
-# docker-examples
-
-- [vergilyn/docker-qq-doc](https://docs.qq.com/doc/DUkx4T0tqR216dEph)
+# docker-script-personal-stores
 
 github-examples:
 - [Docker-Compose with SpringBoot, MySQL, NGINX](https://github.com/hellokoding/dockercompose-springboot-mysql-nginx)
